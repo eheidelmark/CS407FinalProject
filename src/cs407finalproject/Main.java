@@ -20,7 +20,7 @@ public class Main {
         baloo = AF.makeAnimal("b");
         System.out.println(baloo);
         baloo.takeTurn();
-
+        baloo.takeTurn();
         dumbo = AF.makeAnimal("e");
         System.out.println(dumbo);
         dumbo.takeTurn();
