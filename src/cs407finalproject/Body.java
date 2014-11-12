@@ -9,11 +9,12 @@ package cs407finalproject;
  *
  * @author Eric
  */
-public class Arms extends BodyComponent {
+public class Body extends BodyComposite{
 
-    @Override
-    public int adjustStats() {
-        return 10;
+
+  protected int getCompositeStats() {
+    return 25;
+  }
+       
     }
     
-}

@@ -39,6 +39,7 @@ public class AnimalTypeFactory implements AnimalFactory {
         Bear b = new Bear();
         b.MS = new RandomMove(); 
         b.body = makeBody(2,2);
+        b.size = b.body.adjustStats();
         return b;
     }
 
@@ -46,6 +47,7 @@ public class AnimalTypeFactory implements AnimalFactory {
         Elephant e = new Elephant();
         e.MS = new FlightMove();
         e.body = makeBody(0,4);
+        e.size = e.body.adjustStats();
         return e;
     }
     
@@ -53,7 +55,7 @@ public class AnimalTypeFactory implements AnimalFactory {
     /* The animal body should be customizable in so far as the user may add any number
        of arms and legs to the body
     */
-        Body body = new Body();
+        BodyComposite body = new Body();
         for (int a = 0; a < arms; a++){
             body.add(new Arms());
         }

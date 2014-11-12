@@ -31,4 +31,15 @@ public abstract class BodyComposite extends BodyComponent{
     return subComponents.iterator();
   }   
     
+    public int adjustStats() {   
+    int fullAdjustedStats = getCompositeStats();
+    Iterator<BodyComponent> subIter = subComponents.iterator();
+    while (subIter.hasNext()){
+      BodyComponent bodyparts = subIter.next();
+      fullAdjustedStats += bodyparts.adjustStats();
+    }
+    return fullAdjustedStats;  
+  
+}
+    abstract protected int getCompositeStats();
 }

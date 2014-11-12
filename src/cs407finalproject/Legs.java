@@ -12,8 +12,8 @@ package cs407finalproject;
 public class Legs extends BodyComponent {
 
     @Override
-    public void adjustStats() {
-        
+    public int adjustStats() {
+        return 1;
     }
     
 }

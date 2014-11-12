@@ -14,6 +14,7 @@ public abstract class Animal {
     protected int size;
     protected String type;
     protected MovementStrategy MS;
+    protected BodyComposite body;
 
     public void takeTurn() {
         Move();

@@ -16,7 +16,7 @@ public abstract class BodyComponent {
       The number of arms and legs (and anything we add in the future) will affect the animals 
       size and speed.  
     */
-    public abstract void adjustStats();
+    public abstract int adjustStats();
     
 public BodyComposite composite(){
     return null;    

@@ -19,10 +19,12 @@ public class Main {
 
         baloo = AF.makeAnimal("b");
         System.out.println(baloo);
+        System.out.println(baloo.size);
         baloo.takeTurn();
         baloo.takeTurn();
         dumbo = AF.makeAnimal("e");
         System.out.println(dumbo);
+        System.out.println(dumbo.size);
         dumbo.takeTurn();
     }
 
