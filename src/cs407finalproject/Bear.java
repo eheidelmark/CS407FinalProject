@@ -8,7 +8,7 @@ package cs407finalproject;
  * @author Eric
  */
 public class Bear extends Animal {
-
+    // hey bear...
     public Bear() {
         size = 50;
         type = "Bear";
