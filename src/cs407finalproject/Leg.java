@@ -6,16 +6,15 @@
 package cs407finalproject;
 
 /**
- * Creates a Body 
+ * Creates a Body Component Leg
  * 
  * @author Eric
  */
-public class Body extends BodyComposite{
+public class Leg extends BodyComponent {
 
-
-  protected int getCompositeStats() {
-    return 25;
-  }
-       
-}
+    @Override
+    public int adjustStats() {
+        return 1;
+    }
     
+}

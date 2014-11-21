@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cs407finalproject;
 
 /**
- *
+ *  Bear Object extends the Animal Template
+ *  Implements abstract hook method move()
+ * 
  * @author Eric
  */
 public class Bear extends Animal {
@@ -17,7 +15,7 @@ public class Bear extends Animal {
     }
 
     @Override
-    public void Move() {
+    protected void move() {
         MS.move();
     }
 

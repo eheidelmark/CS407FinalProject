@@ -6,7 +6,10 @@
 package cs407finalproject;
 
 /**
- *
+ * Elephant Object extends Animal Template
+ * Implements abstract hook method move()
+ * Overrides template method takeTurn()
+ * 
  * @author Eric
  */
 public class Elephant extends Animal {
@@ -16,13 +19,14 @@ public class Elephant extends Animal {
         type = "Elephant";
     }
 
-    ;
+    @Override
     public void takeTurn() {
         super.takeTurn();
         System.out.println("My fat ass has taken a turn");
     }
 
-    public void Move() {
+    @Override
+    public void move() {
         MS.move();
     }
 

@@ -1,44 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cs407finalproject;
 
 /**
- *
- * @author Eric
+ *  Animal Object Template
+ * 
+ *  Defines a template for an abstract animal.
+ * 
+ *  Template Method: takeTurn()
+ *  Hook Methods: eat(), mutate(), Move()
+ * 
+ * @author Eric * 
  */
+
 public abstract class Animal {
 
     protected int size;
     protected String type;
     protected MovementStrategy MS;
-    protected BodyComposite body;
+    protected Body body;
 
     public void takeTurn() {
-        Move();
+        move();
         eat();
         mutate();
     }
-
-    ;
-    public void eat() {
+    
+    protected void eat() {
         System.out.println("eating");
     }
-
-    ;
     
-    public void mutate() {
+    protected void mutate() {
         System.out.println("mutating");
     }
-
-    ;
     
         public String toString() {
         return type;
     }
 
-    abstract public void Move();
+    abstract protected void move();
 
 }

@@ -10,7 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ *  Creates a Composite component of type BodyComponent
+ * 
  * @author Eric
  */
 public abstract class BodyComposite extends BodyComponent{

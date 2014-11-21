@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cs407finalproject;
 
 /**
- *
+ * RandomMove implements a concrete movement strategy
+ *  which is Random. 
+ * Implements hook method move();
+ * 
  * @author Eric
  */
 public class RandomMove implements MovementStrategy {
 
     @Override
     public void move() {
-        System.out.println("Ramdom Movement Strategy");
+        System.out.println("Random Movement Strategy");
     }
 
 }

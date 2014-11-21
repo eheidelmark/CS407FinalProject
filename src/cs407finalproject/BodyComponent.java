@@ -6,7 +6,8 @@
 package cs407finalproject;
 
 /**
- *
+ *  Creates a Template for a part of a Body.
+ * 
  * @author Eric
  */
 public abstract class BodyComponent {
@@ -18,8 +19,8 @@ public abstract class BodyComponent {
     */
     public abstract int adjustStats();
     
-public BodyComposite composite(){
-    return null;    
+    public BodyComposite composite(){
+        return null;    
     
-}
+    }
 }

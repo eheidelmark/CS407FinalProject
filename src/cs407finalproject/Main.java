@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cs407finalproject;
 
 /**
@@ -17,15 +12,12 @@ public class Main {
 
         AnimalTypeFactory AF = AnimalTypeFactory.getInstance();
 
-        baloo = AF.makeAnimal("b");
+        baloo = AF.makeAnimal("b");  //bear
         System.out.println(baloo);
-        System.out.println(baloo.size);
         baloo.takeTurn();
-        baloo.takeTurn();
-        dumbo = AF.makeAnimal("e");
+
+        dumbo = AF.makeAnimal("e");  //elephant
         System.out.println(dumbo);
-        System.out.println(dumbo.size);
         dumbo.takeTurn();
     }
-
 }
