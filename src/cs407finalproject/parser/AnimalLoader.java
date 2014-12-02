@@ -28,6 +28,7 @@ public class AnimalLoader implements Runnable{
     
     
     private String filename;
+    private Boolean[] allElements = new Boolean[6];
     
     public AnimalLoader(String filename) {              
         this.filename = filename;
@@ -39,6 +40,8 @@ public class AnimalLoader implements Runnable{
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(ClassLoader.getSystemResourceAsStream(filename));
+            
+            
             
             List<TempAnimal> animals = new ArrayList<>();
             
@@ -57,7 +60,9 @@ public class AnimalLoader implements Runnable{
                     boolean eatLarger = false;
                     
                     NodeList childNodes = node.getChildNodes();
-                    int nodeCount = 0;
+                    
+                    resetCheckForAllElements();
+                    
                     for (int j = 0; j < childNodes.getLength(); j++){
                         Node cNode = childNodes.item(j);
                         
@@ -67,35 +72,34 @@ public class AnimalLoader implements Runnable{
                             switch (cNode.getNodeName()){
                                 case "animalType" :
                                     animalType = content;
-                                    nodeCount++;
+                                    allElements[0] = true;
                                     break;
                                 case "movementType" :
                                     movementType = content;
-                                    nodeCount++;
+                                    allElements[1] = true;
                                     break;
                                 case "movementRate" :
                                     movementRate = Integer.parseInt(content);
-                                    nodeCount++;
+                                    allElements[2] = true;
                                     break;
                                 case "cannibal" :
                                     cannibal = Boolean.parseBoolean(content);
-                                    nodeCount++;                                    
+                                    allElements[3] = true;                                   
                                     break;
                                 case "size" :
                                     size = Integer.parseInt(content);
-                                    nodeCount++;
+                                    allElements[4] = true;
                                     break;
                                 case "eatLarger" :
                                     eatLarger = Boolean.parseBoolean(content);
-                                    nodeCount++;
+                                    allElements[5] = true;
                                     break;
                                 default:
                                     throw new AnimalCreationException("Invalid Element inside Animal");
                             }
                         }
-                        //System.out.println(nodeCount);
                     }
-                    if (nodeCount == 6) {
+                    if (checkForAllElements()) {
                         animals.add(new TempAnimal(animalType, movementType, movementRate, cannibal, size, eatLarger));
                     } else throw new AnimalCreationException("Missing Element inside Animal");
                 }
@@ -107,6 +111,20 @@ public class AnimalLoader implements Runnable{
             Logger.getLogger(parserMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AnimalCreationException ex) {
             Logger.getLogger(AnimalLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private boolean checkForAllElements(){
+        for(int i = 0; i < allElements.length; i++) {
+            //System.out.println("checking " + i);
+            if (!allElements[i]) return false;
+        }
+        return true;
+    }
+    
+    private void resetCheckForAllElements(){
+        for(int i = 0; i < allElements.length; i++) {
+            allElements[i] = false;
         }
     }
     
