@@ -81,7 +81,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      * @return instance of SkinTypeDecorator
      */
     @Override
-    public SkinTypeDecorator CreateBody(int arm, int leg, SkinType type) {
+    public Body CreateBody(int arm, int leg, SkinType type) {
 
         SkinTypeDecorator e = new SkinTypeDecorator(makeBodyParts(arm, leg), type);
 
@@ -99,10 +99,10 @@ public class PrototypeAnimalFactory implements AnimalFactory {
 
         Body body = new Body();
         for (int a = 0; a < arms; a++) {
-            body.add(new Arm());
+            body.add(new Arm().clone());
         }
         for (int l = 0; l < legs; l++) {
-            body.add(new Leg());
+            body.add(new Leg().clone());
         }
         return body;
     }

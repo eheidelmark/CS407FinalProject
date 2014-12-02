@@ -17,5 +17,5 @@ public interface AnimalFactory {
 
     public void catalogBody(String name, Body bodyName);
     
-    public SkinTypeDecorator CreateBody(int arm, int leg, SkinType type);
+    public Body CreateBody(int arm, int leg, SkinType type);
 }

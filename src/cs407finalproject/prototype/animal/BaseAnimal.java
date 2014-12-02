@@ -9,14 +9,18 @@ package cs407finalproject.prototype.animal;
  * @author Nick
  */
 public class BaseAnimal implements Animal{
-    private final int size;
-    private final String type;
+    private int size;
+    private final AnimalType animalType;
     private final MovementStrategy MS;
-    private final Body body;
+    private Body body;
+    private final boolean canCannibalize;
+    private final boolean canEatLarger;
     
-    public BaseAnimal(int size, String type, MovementStrategy MS, Body body){
+    public BaseAnimal(int size, boolean canCannibalize, boolean canEatLarger, AnimalType animalType, MovementStrategy MS, Body body){
         this.size = size;
-        this.type = type;
+        this.canCannibalize = canCannibalize;
+        this.canEatLarger = canEatLarger;
+        this.animalType = animalType;
         this.MS = MS;
         this.body = body;
     }   
@@ -34,13 +38,30 @@ public class BaseAnimal implements Animal{
     }
     @Override
     public void eat() {
+        if(canCannibalize){
+            
+        }
+        if(canEatLarger){
+            
+        }
         System.out.println("eating");
     }
     @Override
     public void mutate() {
+        //Mutate/evolve would cause animal to randomly change one feature
+        
      System.out.println("mutating");
     }
-    public BaseAnimal clone(){
-        return new BaseAnimal(size,type,MS,(Body)body.clone());
+    @Override
+    public void moveRate() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public AnimalType animalType(){
+        return animalType;
+    }
+    public BaseAnimal clone(){
+        return new BaseAnimal(size, canCannibalize, canEatLarger, animalType, MS, (Body)body.clone());
+    }
+
 }
