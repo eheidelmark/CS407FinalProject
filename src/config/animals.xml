@@ -1,0 +1,10 @@
+<animals>
+	<animal>
+		<animalType>Carnivore</animalType>
+		<movementType>Random</movementType>
+		<movementRate>2</movementRate>
+		<cannibal>false</cannibal>
+		<size>10</size>
+		<eatLarger>false</eatLarger>
+	</animal>
+</animals>
