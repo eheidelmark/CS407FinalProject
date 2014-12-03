@@ -66,6 +66,39 @@ public class BoardTile {
             inhabitants.remove(animal);
         }
     }
+    public double eatMeat(double amount) {
+        if(meat > amount) {
+            meat -= amount;
+            return 0.0;
+        }
+        double amountLeft = amount - meat;
+        meat = 0.0;
+        return amountLeft;
+    }
+    public double eatPlant(double amount) {
+        
+        return 0.0;
+    }
+    public void fightToDeath() {
+        
+        if(inhabitants.size() > 0) {
+            //find biggest animal  
+            int posOfBiggest = 0;
+            for(int i = 0; i < inhabitants.size(); i++) {
+                if(inhabitants.get(i).getSize() > inhabitants.get(posOfBiggest).getSize()) posOfBiggest = i;
+            }
+            //tally size of remaining animals
+            Animal biggest = inhabitants.remove(posOfBiggest);
+            int freshMeat = 0;
+            for(int i = 0; i < inhabitants.size(); i++) {
+                freshMeat += inhabitants.get(i).getSize();
+            }
+            inhabitants.clear();
+            inhabitants.add(biggest);            
+            //add size to meat
+            meat += freshMeat;
+        }
+    }
     public boolean isOccupied() {
         if(inhabitants.size() > 0) return true;
         return false;

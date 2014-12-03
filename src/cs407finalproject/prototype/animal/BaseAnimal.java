@@ -129,5 +129,10 @@ public class BaseAnimal implements Animal{
     public void setTile(BoardTile position) {
         this.position = position;
     }
+    
+    @Override
+    public int getSize() {
+        return size;
+    }
 
 }

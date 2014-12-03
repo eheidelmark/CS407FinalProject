@@ -26,5 +26,7 @@ public interface Animal extends Cloneable {
     public String getName();
     
     public void setTile(BoardTile position);
+    
+    public int getSize();
 
 }
