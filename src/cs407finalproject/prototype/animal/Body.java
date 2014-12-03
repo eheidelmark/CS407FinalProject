@@ -19,7 +19,11 @@ public class Body extends BodyComposite{
     
     @Override
     public BodyComponent clone() {
-       return new Body();
+       Body clone = new Body();
+       for (int i = 0; i < subComponents.size(); i++) {
+           clone.add(subComponents.get(i));
+       }
+       return clone;
     }
 }
  
