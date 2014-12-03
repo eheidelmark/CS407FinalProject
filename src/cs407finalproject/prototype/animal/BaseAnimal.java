@@ -8,7 +8,8 @@ package cs407finalproject.prototype.animal;
 import java.util.Random;
 
 /**
- *
+ * The implementation of Animal. 
+ * 
  * @author Nick
  */
 public class BaseAnimal implements Animal{
@@ -31,20 +32,28 @@ public class BaseAnimal implements Animal{
         this.movementRate = movementRate;
         this.body = body;
     }   
-    
+    /**
+     * Uses the associated movement strategy based on movement rate.
+     */
     @Override
     public void move() {
         for(int i = 0; i < movementRate; i++) {
             MS.move();
         }
     }
-    
+    /**
+     * Takes a turn which involves multiple actions.
+     */
     @Override
     public void takeTurn() {
         move();
         eat();
         mutate();
     }
+    /**
+     * Eats based on the animals type and whether or not it is a cannibal
+     * and can eat larger animals.
+     */
     @Override
     public void eat() {
         if(canCannibalize){
@@ -55,6 +64,9 @@ public class BaseAnimal implements Animal{
         }
         System.out.println("eating");
     }
+    /**
+     * Mutates the animal randomly.
+     */
     @Override
     public void mutate() {
         //Mutate/evolve would cause animal to randomly change one feature
@@ -79,15 +91,28 @@ public class BaseAnimal implements Animal{
         }        
         //System.out.println("mutating");
     }
-    
+    /**
+     * Returns the name of the animal.
+     * 
+     * @return String aninmalName
+     */
     @Override
     public String getName() {
         return animalName;
     }
-
+    /**
+     * Returns the type of animal
+     * 
+     * @return AnimalType
+     */
     public AnimalType animalType(){
         return animalType;
     }
+    /**
+     * Clones the animal.
+     * 
+     * @return copy of BaseAnimal
+     */
     public BaseAnimal clone(){
         return new BaseAnimal(animalName, size, canCannibalize, canEatLarger, animalType, MS, movementRate, (Body)body.clone());
     }

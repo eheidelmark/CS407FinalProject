@@ -6,7 +6,8 @@
 package cs407finalproject.prototype.animal;
 
 /**
- *
+ *  Enumeration of different types of animals.
+ * 
  * @author Nick
  */
 public class AnimalType {
