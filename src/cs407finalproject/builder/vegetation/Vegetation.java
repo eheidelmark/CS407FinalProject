@@ -25,7 +25,14 @@ public class Vegetation {
         shrubs = builder.populateShrubs();
         grass = builder.populateGrass();
     }
-        
+    
+    /**
+     * Consumes grass from the local vegetation.
+     * 
+     * @param amount of grass to eat.
+     * @return the amount left to eat, or 0.0 if 
+     *      there was enough food to eat.
+     */
     public double eatGrass (double amount){
         double amountLeft = amount;
         int index = 0;
@@ -44,6 +51,13 @@ public class Vegetation {
         return amountLeft;
     }
     
+    /**
+     * Consumes trees from the local vegetation.
+     * 
+     * @param amount of trees to eat.
+     * @return the amount left to eat, or 0.0 if 
+     *      there was enough food to eat.
+     */
     public double eatTrees (double amount){
         double amountLeft = amount;
         int index = 0;
@@ -62,6 +76,13 @@ public class Vegetation {
         return amountLeft;
     }    
     
+    /**
+     * Consumes shrubs from the local vegetation.
+     * 
+     * @param amount of shrubs to eat.
+     * @return the amount left to eat, or 0.0 if 
+     *      there was enough food to eat.
+     */
     public double eatShrubs (double amount){
         double amountLeft = amount;
         int index = 0;
@@ -80,6 +101,11 @@ public class Vegetation {
         return amountLeft;
     }
     
+    /**
+     * Returns the total nutrition value of the local vegetation.
+     * 
+     * @return available nutrition;
+     */
     public double getCurrentAvailableNutrition(){
         double totalNutrition = 0.0;
         
@@ -95,6 +121,9 @@ public class Vegetation {
         return totalNutrition;        
     }
     
+    /**
+     * Triggers growth on all consumable plants
+     */
     public void grow(){
         double totalNutrition = 0.0;
         
@@ -119,12 +148,22 @@ public class Vegetation {
         private int numGrass;
         private VegetationClimate climate;
         
+        /**
+         * Creates the predefined Vegetation.
+         * 
+         * @return vegetation.
+         */
         public Vegetation build() {
             return new Vegetation(this);
         }
         
+        /**
+         * Creates all of the trees for the type of climate
+         * 
+         * @return List of trees.
+         */
         private List<Tree> populateTrees() {
-            List<Tree> trees = new ArrayList<Tree>();
+            List<Tree> trees = new ArrayList<>();
             for (int i = 0; i < numTrees; i++) {
                 if (climate == VegetationClimate.TROPICAL) {
                     trees.add(new PalmTree());
@@ -133,6 +172,11 @@ public class Vegetation {
             return trees;
         }
         
+        /**
+         * Creates all of the shrubs for the type of climate
+         * 
+         * @return List of shrubs.
+         */
         private List<Shrub> populateShrubs() {
             List<Shrub> shrubs = new ArrayList<Shrub>();
             for (int i = 0; i < numShrubs; i++) {
@@ -143,6 +187,11 @@ public class Vegetation {
             return shrubs;
         }
         
+        /**
+         * Creates all of the grass for the type of climate
+         * 
+         * @return List of grass.
+         */
         private List<Grass> populateGrass() {
             List<Grass> grasses = new ArrayList<Grass>();
             for (int i = 0; i < numGrass; i++) {
