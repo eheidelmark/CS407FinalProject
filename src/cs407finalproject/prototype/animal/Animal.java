@@ -1,5 +1,7 @@
 package cs407finalproject.prototype.animal;
 
+import cs407finalproject.BoardTile;
+
 /**
  * Animal Object Template
  *
@@ -22,5 +24,7 @@ public interface Animal extends Cloneable {
     public Animal clone();
     
     public String getName();
+    
+    public void setTile(int[] position);
 
 }
