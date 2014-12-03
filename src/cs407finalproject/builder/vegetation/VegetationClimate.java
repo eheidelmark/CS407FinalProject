@@ -7,8 +7,9 @@
 package cs407finalproject.builder.vegetation;
 
 /**
- *
- * @author JGR
+ *  Enumeration of types of Vegetation Climates.
+ * 
+ * @author Jonathan
  */
 public class VegetationClimate {
     
