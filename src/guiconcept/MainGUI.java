@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package guiconcept;
+import cs407finalproject.GameBoard;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
@@ -16,18 +17,18 @@ import java.util.ArrayList;
  */
 public class MainGUI extends javax.swing.JFrame {
 MyCanvas Canvas = new MyCanvas();
+ArrayList<ArrayList<String>> tempBoard = new ArrayList<>();
+GameBoard board;
     /**
      * Creates new form MainGUI
      */
     public MainGUI() {
-        initComponents();
-        
+        initComponents();       
         
         Canvas.setBackground(Color.white);
         Canvas.setSize(700,700);        
         jPanel3.add(Canvas);       
-        jTextField1.setText("3");       
-
+        jTextField1.setText("3");
     }
     
 public int getTiles(){
@@ -67,6 +68,8 @@ public int getMountains(){
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +83,11 @@ public int getMountains(){
         });
 
         jButton2.setText("Accept Map");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Terrain Type"));
 
@@ -152,7 +160,7 @@ public int getMountains(){
         });
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Hexagon Tiles");
+        jRadioButton2.setText("Hexagon Tiles(not implemented yet)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -174,6 +182,8 @@ public int getMountains(){
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        jPanel3.setPreferredSize(new java.awt.Dimension(633, 633));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -182,8 +192,10 @@ public int getMountains(){
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 633, Short.MAX_VALUE)
         );
+
+        jLabel1.setText("Number of creatures:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,29 +205,36 @@ public int getMountains(){
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
@@ -235,16 +254,28 @@ public int getMountains(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void chbWaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbWaterActionPerformed
-        sldWater.setEnabled(chbWater.isSelected()); 
+        sldWater.setEnabled(chbWater.isSelected());
+         if (!chbWater.isSelected())
+                sldWater.setValue(0);
     }//GEN-LAST:event_chbWaterActionPerformed
 
     private void chbFlatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbFlatActionPerformed
         sldFlat.setEnabled(chbFlat.isSelected());
+         if (!chbFlat.isSelected())
+                sldFlat.setValue(0);
     }//GEN-LAST:event_chbFlatActionPerformed
 
     private void chbMountainsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbMountainsActionPerformed
         sldMountains.setEnabled(chbMountains.isSelected());
+        if (!chbMountains.isSelected())
+                sldMountains.setValue(0);
+           
     }//GEN-LAST:event_chbMountainsActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       board = new GameBoard(tempBoard, getTiles());       
+       jButton1.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,9 +299,9 @@ public class MyCanvas extends Canvas {
 
     @Override
     public void paint(Graphics graphics) { 
-        Random rand = new Random();
-        final int Width  = 595;
-        final int Height = 500;
+        Random rand = new Random();        
+        final int Width  = 625;
+        final int Height = 625;
         int tileHeight;
         int tileWidth;
         int xPos = 2;
@@ -291,15 +322,13 @@ public class MyCanvas extends Canvas {
         mountainPerc = mountainPerc / sum;       
         int tiles = getTiles();
         tileHeight =  Height/tiles;
-        tileWidth = Width/tiles;
+        tileWidth = Width/tiles;   
         
-        
-        String[][] tempBoard = new String[tiles][tiles];
-        
+       
         for (int i = 0; i < tiles; i++){
             for (int j = 0; j < tiles; j++){         
             temp = rand.nextDouble(); 
-            //tempBoard.add(new ArrayList<String>(tiles));
+            tempBoard.add(new ArrayList<String>(tiles));
             //color tiles based on percentages above
             graphics.setColor(Color.green);
             terrain = "Land";
@@ -313,7 +342,7 @@ public class MyCanvas extends Canvas {
             }
             graphics.fillRect(xPos, yPos, tileWidth, tileHeight);   
             xPos += tileWidth;
-            tempBoard[i][j] = terrain;
+            tempBoard.get(i).add(j, terrain);
             }
             
             xPos = 2;
@@ -329,6 +358,7 @@ public class MyCanvas extends Canvas {
     private javax.swing.JCheckBox chbWater;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -336,6 +366,7 @@ public class MyCanvas extends Canvas {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JSlider sldFlat;
     private javax.swing.JSlider sldMountains;
     private javax.swing.JSlider sldWater;

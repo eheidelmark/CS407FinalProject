@@ -24,6 +24,12 @@ public class VegetationDirector {
         builder.plantGrass(10);
         builder.setClimate(VegetationClimate.TEMPERATE);
     }
+        public static void buildUnderwater(Vegetation.VegetationBuilder builder){
+        builder.plantTrees(20);
+        builder.plantShrubs(20);
+        builder.plantGrass(30);
+        builder.setClimate(VegetationClimate.Underwater);
+    }
     /**
      * Builds "plants" vegetation found in a tropical zone.
      * @param builder 
