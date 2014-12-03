@@ -10,11 +10,16 @@ package cs407finalproject.prototype.animal;
  * 
  * @author Eric
  */
-public class Arm extends Body {
+public class Arm extends BodyComponent {
 
     @Override
     public int adjustStats() {
         return 10;
+    }
+
+    @Override
+    public BodyComponent clone() {
+        return new Arm();
     }
     
 }
