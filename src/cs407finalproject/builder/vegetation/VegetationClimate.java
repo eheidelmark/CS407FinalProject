@@ -18,7 +18,7 @@ public class VegetationClimate {
     public static final VegetationClimate DESERT = new VegetationClimate("desert");
     public static final VegetationClimate SUBTROPICAL = new VegetationClimate("subtropical");
     public static final VegetationClimate Underwater = new VegetationClimate("underwater");
-    
+    public static final VegetationClimate Barren = new VegetationClimate("Barren");
     private VegetationClimate(String type) {
        this.type = type;
     }
