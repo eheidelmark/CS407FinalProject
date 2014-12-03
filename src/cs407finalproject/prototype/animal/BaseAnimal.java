@@ -6,6 +6,8 @@
 package cs407finalproject.prototype.animal;
 
 import cs407finalproject.BoardTile;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -43,7 +45,7 @@ public class BaseAnimal implements Animal{
             //request neightboring tiles
             //positon = MS.move(getTiles(position));
             position.removeAnimal(this);
-            position = MS.move(getNeighboringTiles[]);
+            position = MS.move(new ArrayList<BoardTile>()); //TODO
             position.addAnimal(this);
         }
     }
@@ -124,7 +126,7 @@ public class BaseAnimal implements Animal{
     }
 
     @Override
-    public void setTile(int[] position) {
+    public void setTile(BoardTile position) {
         this.position = position;
     }
 
