@@ -5,6 +5,7 @@
  */
 package cs407finalproject.prototype.animal;
 
+import cs407finalproject.BoardTile;
 import java.util.Random;
 
 /**
@@ -21,6 +22,7 @@ public class BaseAnimal implements Animal{
     private final boolean canCannibalize;
     private final boolean canEatLarger;
     private String animalName;
+    private BoardTile position;
     
     public BaseAnimal(String animalName, int size, boolean canCannibalize, boolean canEatLarger, AnimalType animalType, MovementStrategy MS, int movementRate, Body body){
         this.animalName = animalName;
@@ -38,14 +40,18 @@ public class BaseAnimal implements Animal{
     @Override
     public void move() {
         for(int i = 0; i < movementRate; i++) {
-            MS.move();
+            //request neightboring tiles
+            //positon = MS.move(getTiles(position));
+            position.removeAnimal(this);
+            position = MS.move(getNeighboringTiles[]);
+            position.addAnimal(this);
         }
     }
     /**
      * Takes a turn which involves multiple actions.
      */
     @Override
-    public void takeTurn() {
+    public void takeTurn() {        
         move();
         eat();
         mutate();
@@ -115,6 +121,11 @@ public class BaseAnimal implements Animal{
      */
     public BaseAnimal clone(){
         return new BaseAnimal(animalName, size, canCannibalize, canEatLarger, animalType, MS, movementRate, (Body)body.clone());
+    }
+
+    @Override
+    public void setTile(int[] position) {
+        this.position = position;
     }
 
 }

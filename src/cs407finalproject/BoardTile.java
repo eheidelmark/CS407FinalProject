@@ -6,6 +6,7 @@
 package cs407finalproject;
 
 import cs407finalproject.builder.vegetation.Vegetation;
+import cs407finalproject.prototype.animal.Animal;
 import java.util.List;
 
 /**
