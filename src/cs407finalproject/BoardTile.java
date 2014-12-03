@@ -13,13 +13,13 @@ import java.util.List;
  * @author Eric
  */
 public class BoardTile {
-    int x;
-    int y;
+    private int x;
+    private int y;
     private String terrainType;
     private int vegetationValue;
-    Vegetation tileOfVegetation;
-    List<Animal> inhabitants;
-    boolean traversable;
+    private Vegetation tileOfVegetation;
+    private List<Animal> inhabitants;
+    private boolean traversable;
 
 
     public BoardTile(int x, int y, String terrain, Vegetation veg, boolean traversable){
@@ -63,6 +63,10 @@ public class BoardTile {
             } else {
             inhabitants.remove(animal);
         }
+    }
+    public boolean isOccupied() {
+        if(inhabitants.size() > 0) return true;
+        return false;
     }
     public boolean isTraversable() {
         return traversable;
