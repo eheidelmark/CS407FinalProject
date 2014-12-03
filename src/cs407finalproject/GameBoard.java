@@ -8,22 +8,19 @@ package cs407finalproject;
 import cs407finalproject.builder.vegetation.Vegetation;
 import cs407finalproject.builder.vegetation.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
  * @author Eric
  */
-public class GameBoard { 
-    private int Size;
-    private BoardTile[][] GameBoard;
-    private Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
-    public Iterator<BoardTile> tileIterator;
+public class GameBoard {   
+    BoardTile[][] GameBoard;
+    Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
+    
 
 public GameBoard(ArrayList<ArrayList<String>> Board, int size){
     GameBoard = new BoardTile[size][size];
-    tileIterator = new GameBoard.tileIterator();
-    Size = size;
+    
     String val;
     for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){ 
@@ -44,43 +41,4 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
             }            
     }
 }
-    public BoardTile getTile(int x, int y){
-        return GameBoard[x][y];
-    }
-    public ArrayList<BoardTile> getNeighbors(int x, int y){
-        ArrayList<BoardTile> neighbors = new ArrayList(); 
-        //North
-        if (y > 0)
-            neighbors.add(getTile(x, y-1));
-        //East
-        if (x < this.Size)
-           neighbors.add(getTile(x+1, y));
-        //South
-        if (y < this.Size)
-            neighbors.add(getTile(x, y+1));
-        //West
-        if (x > 0)
-            neighbors.add(getTile(x-1, y));
-        return neighbors;    
-    }
-    public Iterator tileIterator(){
-        return this.new tileIterator();
-    }
-    private class tileIterator<BoardTile> implements Iterator{
-
-        @Override
-        public boolean hasNext() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public Object next() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
 }
