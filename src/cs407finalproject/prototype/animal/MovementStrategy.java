@@ -1,5 +1,7 @@
 package cs407finalproject.prototype.animal;
 
+import cs407finalproject.BoardTile;
+
 /**
  *  MovementStrategy defines a common interface 
  *   of different movements.
@@ -7,5 +9,5 @@ package cs407finalproject.prototype.animal;
  * @author Eric
  */
 public interface MovementStrategy {
-    public void move();
+    public BoardTile move(BoardTile[] neighboringTiles);
 }
