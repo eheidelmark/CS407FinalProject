@@ -19,8 +19,6 @@ public interface Animal extends Cloneable {
 
     public void move();
     
-    public void moveRate();
-    
     public Animal clone();
     
     public String getName();

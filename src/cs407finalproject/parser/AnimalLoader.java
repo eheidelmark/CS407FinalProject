@@ -181,7 +181,7 @@ public class AnimalLoader implements Runnable{
                         }
                         //catalog animal
                         if(!AF.animalExists(animalName)) {
-                            AF.catalogAnimal(animalName, new BaseAnimal(animalName, size, cannibal,eatLarger, animalType, movementStrategy, AF.makeBody(bodyType)));
+                            AF.catalogAnimal(animalName, new BaseAnimal(animalName, size, cannibal,eatLarger, animalType, movementStrategy, movementRate, AF.makeBody(bodyType)));
                             animals.add(animalName);
                         }                        
                     } else throw new AnimalCreationException("Missing Element inside Animal");
@@ -196,7 +196,7 @@ public class AnimalLoader implements Runnable{
     }
     
     public LinkedList<Animal> getAnimals(int numberOf){
-        LinkedList<Animal> randomAnimals = new LinkedList<Animal>();
+        LinkedList<Animal> randomAnimals = new LinkedList<>();
         Random random = new Random();
         for(int i = 0; i < numberOf; i++) {
             randomAnimals.add(AF.makeAnimal(animals.get(random.nextInt(animals.size()))));

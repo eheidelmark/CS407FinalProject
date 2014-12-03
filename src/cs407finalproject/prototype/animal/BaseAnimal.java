@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package cs407finalproject.prototype.animal;
+
+import java.util.Random;
+
 /**
  *
  * @author Nick
@@ -12,24 +15,28 @@ public class BaseAnimal implements Animal{
     private int size;
     private final AnimalType animalType;
     private final MovementStrategy MS;
+    private int movementRate;
     private Body body;
     private final boolean canCannibalize;
     private final boolean canEatLarger;
     private String animalName;
     
-    public BaseAnimal(String animalName, int size, boolean canCannibalize, boolean canEatLarger, AnimalType animalType, MovementStrategy MS, Body body){
+    public BaseAnimal(String animalName, int size, boolean canCannibalize, boolean canEatLarger, AnimalType animalType, MovementStrategy MS, int movementRate, Body body){
         this.animalName = animalName;
         this.size = size;
         this.canCannibalize = canCannibalize;
         this.canEatLarger = canEatLarger;
         this.animalType = animalType;
         this.MS = MS;
+        this.movementRate = movementRate;
         this.body = body;
     }   
     
     @Override
     public void move() {
-        MS.move();
+        for(int i = 0; i < movementRate; i++) {
+            MS.move();
+        }
     }
     
     @Override
@@ -51,13 +58,28 @@ public class BaseAnimal implements Animal{
     @Override
     public void mutate() {
         //Mutate/evolve would cause animal to randomly change one feature
+        Random random = new Random();      
         
-     System.out.println("mutating");
+        switch (random.nextInt(3)) {
+            // add leg
+            case 0: 
+                body.add(new Leg());
+                System.out.println(animalName + " added a leg.");
+                break;
+            // add arm
+            case 1:
+                body.add(new Arm());
+                System.out.println(animalName + " added an arm.");
+                break;
+            // remove random apendage    
+            case 2:
+                body.subComponents.remove(random.nextInt(body.subComponents.size()));
+                System.out.println(animalName + " shedded an apendage.");
+                break;
+        }        
+        //System.out.println("mutating");
     }
-    @Override
-    public void moveRate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     @Override
     public String getName() {
         return animalName;
@@ -67,7 +89,7 @@ public class BaseAnimal implements Animal{
         return animalType;
     }
     public BaseAnimal clone(){
-        return new BaseAnimal(animalName, size, canCannibalize, canEatLarger, animalType, MS, (Body)body.clone());
+        return new BaseAnimal(animalName, size, canCannibalize, canEatLarger, animalType, MS, movementRate, (Body)body.clone());
     }
 
 }
