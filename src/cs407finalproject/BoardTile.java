@@ -21,6 +21,7 @@ public class BoardTile {
     private Vegetation tileOfVegetation;
     private List<Animal> inhabitants;
     private boolean traversable;
+    private double meat = 0.0;
 
 
     public BoardTile(int x, int y, String terrain, Vegetation veg, boolean traversable){

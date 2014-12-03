@@ -1,6 +1,7 @@
 package cs407finalproject.prototype.animal;
 
 import cs407finalproject.BoardTile;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -16,9 +17,9 @@ public class RandomMove implements MovementStrategy {
      *
      */
     @Override
-    public BoardTile move(BoardTile[] neighboringTiles) {       
-        int random = new Random().nextInt(neighboringTiles.length);
-        return neighboringTiles[random];
+    public BoardTile move(List<BoardTile> neighboringTiles) {      
+        int random = new Random().nextInt(neighboringTiles.size());
+        return neighboringTiles.get(random);
     }
 
 }
