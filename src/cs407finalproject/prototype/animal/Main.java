@@ -17,8 +17,8 @@ public class Main {
         AF.catalogBody("4 Legs", AF.CreateBody(0, 4, SkinType.FUR));
         AF.catalogBody("2 Legs 2 Arms", AF.CreateBody(1, 2, SkinType.FUR));
         //create animals BaseAnimal(size, canCanniablize, canEatLarger, AnimalType, ms,Body)
-        AF.catalogAnimal("Bear", new BaseAnimal(50, true, true, AnimalType.Carnivore, new FightMove(), AF.makeBody("2 Legs 2 Arms")));
-        AF.catalogAnimal("Elephant", new BaseAnimal(100, false, false, AnimalType.Herbivore, new FlightMove(), AF.makeBody("4 Legs")));
+        AF.catalogAnimal("Bear", new BaseAnimal("Bear", 50, true, true, AnimalType.Carnivore, new FightMove(), AF.makeBody("2 Legs 2 Arms")));
+        AF.catalogAnimal("Elephant", new BaseAnimal("Elephant", 100, false, false, AnimalType.Herbivore, new FlightMove(), AF.makeBody("4 Legs")));
 
         AnimalFactory animalFactory1 = PrototypeAnimalFactory.getInstance();
 

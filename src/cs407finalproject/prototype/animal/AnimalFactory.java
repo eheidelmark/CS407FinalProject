@@ -17,5 +17,9 @@ public interface AnimalFactory {
 
     public void catalogBody(String name, Body bodyName);
     
+    public boolean animalExists(String name);
+    
+    public boolean bodyExists(String name);
+    
     public Body CreateBody(int arm, int leg, SkinType type);
 }

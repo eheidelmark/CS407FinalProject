@@ -1,10 +1,52 @@
 <animals>
-	<animal>
-		<animalType>Carnivore</animalType>
-		<movementType>Random</movementType>
-		<movementRate>2</movementRate>
-		<cannibal>false</cannibal>
-		<size>10</size>
-		<eatLarger>false</eatLarger>
-	</animal>
+    <!-- Sample Animal
+    <animal>
+        <animalName>Leapord</animalName>         string name
+        <animalType>Carnivore</animalType>       Valid Types Carnivore, Omnivore, Herbivore
+        <movementType>Random</movementType>      Valid Types Random, Fight, Flight
+	<movementRate>2</movementRate>           int
+	<cannibal>false</cannibal>               boolean 
+	<size>10</size>                          int
+	<eatLarger>false</eatLarger>             boolean
+        <arms>0</arms>                           int
+        <legs>4</legs>                           int
+        <skinType>Fur</skinType>                 Valid Types bare skin, fur, scales, feathers
+    </animal>
+    -->
+    <animal>
+        <animalName>Leapord</animalName>
+        <animalType>Carnivore</animalType>
+        <movementStrategy>Random</movementStrategy>
+	<movementRate>2</movementRate>
+	<cannibal>false</cannibal>
+	<size>10</size>
+	<eatLarger>false</eatLarger>
+        <arms>0</arms>
+        <legs>4</legs>
+        <skinType>Fur</skinType>        
+    </animal>
+    <animal>
+        <animalName>Elephant</animalName>
+        <animalType>Herbivore</animalType>
+        <movementStrategy>Fight</movementStrategy>
+	<movementRate>1</movementRate>
+	<cannibal>false</cannibal>
+	<size>30</size>
+	<eatLarger>false</eatLarger>
+        <arms>0</arms>
+        <legs>4</legs>
+        <skinType>Bare Skin</skinType>        
+    </animal>
+    <animal>
+        <animalName>Bear</animalName>
+        <animalType>Omnivore</animalType>
+        <movementStrategy>Fight</movementStrategy>
+	<movementRate>1</movementRate>
+	<cannibal>false</cannibal>
+	<size>15</size>
+	<eatLarger>false</eatLarger>
+        <arms>2</arms>
+        <legs>2</legs>
+        <skinType>Fur</skinType>        
+    </animal>
 </animals>

@@ -78,6 +78,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      * @param name of animal
      * @return boolean
      */
+    @Override
     public boolean animalExists(String name){
         return animalLibrary.containsKey(name);
     }
@@ -88,6 +89,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      * @param name of body
      * @return boolean
      */
+    @Override
     public boolean bodyExists(String name){
         return bodyLibrary.containsKey(name);
     }

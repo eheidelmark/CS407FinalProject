@@ -6,6 +6,8 @@
 
 package cs407finalproject.parser;
 
+import cs407finalproject.prototype.animal.*;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,10 +20,16 @@ public class parserMain {
     public static void main(String[] args) {
         
         try {
-            Thread loader = new Thread(new AnimalLoader("config/animals.xml"));
+            AnimalLoader animalLoader = new AnimalLoader("config/animals.xml");
+            Thread loader = new Thread(animalLoader);
             loader.start();
             loader.join();
+            LinkedList<Animal> animals = animalLoader.getAnimals(20);
             System.out.println("Done Loading");
+            
+            for(Animal animal: animals) {
+                System.out.println(animal.getName());
+            }
             
         } catch (InterruptedException ex) {
             Logger.getLogger(parserMain.class.getName()).log(Level.SEVERE, null, ex);
