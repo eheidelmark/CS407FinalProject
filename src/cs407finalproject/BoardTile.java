@@ -13,8 +13,8 @@ import java.util.List;
  * @author Eric
  */
 public class BoardTile {
-    int x;
-    int y;
+    private int x;
+    private int y;
     private String terrainType;
     private int vegetationValue;
     Vegetation tileOfVegetation;

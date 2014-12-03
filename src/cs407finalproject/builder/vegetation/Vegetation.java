@@ -167,6 +167,9 @@ public class Vegetation {
             for (int i = 0; i < numTrees; i++) {
                 if (climate == VegetationClimate.TROPICAL) {
                     trees.add(new PalmTree());
+                if (climate == VegetationClimate.Underwater) {
+                    trees.add(new Kelp());
+                }
                 } 
             }
             return trees;
