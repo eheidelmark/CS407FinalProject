@@ -50,11 +50,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -104,13 +104,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="chbWater" min="-2" max="-2" attributes="0"/>
                       <Component id="chbFlat" min="-2" max="-2" attributes="0"/>
-                      <Component id="sldWater" min="-2" max="-2" attributes="0"/>
                       <Component id="sldFlat" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="chbMountains" min="-2" max="-2" attributes="0"/>
                       <Component id="sldMountains" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace min="83" max="32767" attributes="0"/>
               </Group>
+              <Component id="sldWater" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

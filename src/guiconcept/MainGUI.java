@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.util.Random;
 import java.awt.Canvas;
 import java.awt.Scrollbar;
+import java.util.ArrayList;
 /**
  *
  * @author Eric
@@ -25,13 +26,8 @@ MyCanvas Canvas = new MyCanvas();
         Canvas.setBackground(Color.white);
         Canvas.setSize(700,700);        
         jPanel3.add(Canvas);       
-        jTextField1.setText("1");
-        
-        Scrollbar hScroll = new Scrollbar(Scrollbar.HORIZONTAL, 0,1,0,255);
-        Scrollbar vScroll = new Scrollbar(Scrollbar.VERTICAL, 0,1,0,255);
-        jPanel3.add(hScroll);
-        jPanel3.add(vScroll);
-        jPanel3.setVisible(true);
+        jTextField1.setText("3");       
+
     }
     
 public int getTiles(){
@@ -120,11 +116,11 @@ public int getMountains(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chbWater)
                     .addComponent(chbFlat)
-                    .addComponent(sldWater, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sldFlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chbMountains)
                     .addComponent(sldMountains, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(sldWater, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,11 +209,11 @@ public int getMountains(){
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(44, 44, 44)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(jButton1)
@@ -280,6 +276,7 @@ public class MyCanvas extends Canvas {
         int xPos = 2;
         int yPos = 2;
         
+        
         /* determine the percentages for each terrain type for coloring 
         dependent on the value of the slider bars for each.
         */        
@@ -288,6 +285,7 @@ public class MyCanvas extends Canvas {
         double mountainPerc = getMountains() * .333;  
         double sum = waterPerc + flatPerc + mountainPerc;
         double temp;
+        String terrain;
         waterPerc = waterPerc / sum;
         flatPerc = flatPerc / sum;
         mountainPerc = mountainPerc / sum;       
@@ -295,24 +293,35 @@ public class MyCanvas extends Canvas {
         tileHeight =  Height/tiles;
         tileWidth = Width/tiles;
         
+        
+        String[][] tempBoard = new String[tiles][tiles];
+        
         for (int i = 0; i < tiles; i++){
             for (int j = 0; j < tiles; j++){         
             temp = rand.nextDouble(); 
+            //tempBoard.add(new ArrayList<String>(tiles));
             //color tiles based on percentages above
             graphics.setColor(Color.green);
-            if (temp < waterPerc)
+            terrain = "Land";
+            if (temp < waterPerc){
                 graphics.setColor(Color.blue);
-            else if  (temp < waterPerc + mountainPerc)
-                graphics.setColor(Color.black);
-            graphics.fillRect(xPos, yPos, tileWidth, tileHeight);   
-            
-            xPos += tileWidth;
+                terrain = "Water";               
             }
+            else if  (temp < waterPerc + mountainPerc){
+                graphics.setColor(Color.black);
+                terrain = "Mountains";                
+            }
+            graphics.fillRect(xPos, yPos, tileWidth, tileHeight);   
+            xPos += tileWidth;
+            tempBoard[i][j] = terrain;
+            }
+            
             xPos = 2;
             yPos += tileHeight;
         }
-    }
 }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbFlat;
