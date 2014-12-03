@@ -22,12 +22,13 @@ public class BoardTile {
     boolean traversable;
 
 
-    public BoardTile(int x, int y, String terrain, Vegetation veg){
+    public BoardTile(int x, int y, String terrain, Vegetation veg, boolean traversable){
         this.x = x;
         this.y = y;
         terrainType = terrain;
         tileOfVegetation = veg;
         inhabitants = null;
+        this.traversable = traversable;
     }
 
     public int getX(){
