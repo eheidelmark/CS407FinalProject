@@ -76,8 +76,10 @@ public class BoardTile {
         return amountLeft;
     }
     public double eatPlant(double amount) {
-        
-        return 0.0;
+        double amountLeft = tileOfVegetation.eatGrass(amount);
+        if(amountLeft > 0.0) amountLeft = tileOfVegetation.eatShrubs(amountLeft);
+        if(amountLeft > 0.0) amountLeft = tileOfVegetation.eatTrees(amountLeft);
+        return amountLeft;
     }
     public void fightToDeath() {
         
