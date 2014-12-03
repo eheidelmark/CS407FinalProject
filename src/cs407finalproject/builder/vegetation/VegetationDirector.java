@@ -51,7 +51,10 @@ public class VegetationDirector {
      * Builds "plants" vegetation found in a desert zone.
      * @param builder 
      */
-    public static void buildDesert(Vegetation.VegetationBuilder builder){
-        // not yet implemented
+    public static void buildBarren(Vegetation.VegetationBuilder builder){
+        builder.plantTrees(0);
+        builder.plantShrubs(0);
+        builder.plantGrass(0);
+        builder.setClimate(VegetationClimate.DESERT);
     }
 }
