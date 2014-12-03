@@ -21,7 +21,7 @@ public class Body extends BodyComposite{
     public BodyComponent clone() {
        Body clone = new Body();
        for (int i = 0; i < subComponents.size(); i++) {
-           clone.add(subComponents.get(i));
+           clone.add(subComponents.get(i).clone());
        }
        return clone;
     }
