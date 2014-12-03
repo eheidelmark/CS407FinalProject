@@ -12,7 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ *  Demonstrates how to use the AnimalLoader.
+ * 
  * @author Jonathan 
  */
 public class parserMain {

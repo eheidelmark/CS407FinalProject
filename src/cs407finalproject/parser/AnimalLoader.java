@@ -25,7 +25,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- *
+ *  Loads animals from an XML file and creates them using the PrototypeAnimalFactory.
+ * 
  * @author Jonathan
  */
 public class AnimalLoader implements Runnable{
@@ -35,14 +36,12 @@ public class AnimalLoader implements Runnable{
     private Boolean[] allElements = new Boolean[10];
     private List<String> animals;
     private AnimalFactory AF;
-    //private AnimalFactory animalFactory1;
     
     
     public AnimalLoader(String filename) {              
         this.filename = filename;
         animals = new ArrayList<String>();
         AF = PrototypeAnimalFactory.getInstance();
-        //animalFactory1 = PrototypeAnimalFactory.getInstance();
     }
 
     @Override
@@ -195,11 +194,18 @@ public class AnimalLoader implements Runnable{
         }
     }
     
+    /**
+     * Returns requested number of animals randomly generated
+     * from the different types of animals.
+     * 
+     * @param numberOf animals
+     * @return LinkedList of Animals
+     */
     public LinkedList<Animal> getAnimals(int numberOf){
         LinkedList<Animal> randomAnimals = new LinkedList<>();
         Random random = new Random();
         for(int i = 0; i < numberOf; i++) {
-            randomAnimals.add(AF.makeAnimal(animals.get(random.nextInt(animals.size()))));
+            randomAnimals.add(    AF.makeAnimal(  animals.get( random.nextInt(animals.size()) )  )   );
         }
         return randomAnimals;
     }
@@ -217,7 +223,9 @@ public class AnimalLoader implements Runnable{
             allElements[i] = false;
         }
     }
-    
+    /**
+     * Exception for issues when creating Animals from the config file.
+     */
     public class AnimalCreationException extends Exception {
             
             public AnimalCreationException(String message) {
