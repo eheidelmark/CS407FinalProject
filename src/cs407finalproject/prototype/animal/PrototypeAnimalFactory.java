@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class PrototypeAnimalFactory implements AnimalFactory {
 
-    private Map<String, Animal> animalLibary;
+    private Map<String, Animal> animalLibrary;
     private Map<String, Body> bodyLibrary;
 
     /**
@@ -20,7 +20,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
     private static PrototypeAnimalFactory instance;
 
     private PrototypeAnimalFactory() {
-        animalLibary = new HashMap<String, Animal>();
+        animalLibrary = new HashMap<String, Animal>();
         bodyLibrary = new HashMap<String, Body>();
     }
 
@@ -36,7 +36,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      */
     @Override
     public Animal makeAnimal(String animalName) {
-        Animal prototypeAnimal = animalLibary.get(animalName);
+        Animal prototypeAnimal = animalLibrary.get(animalName);
         return (Animal) prototypeAnimal.clone();
     }
 
@@ -58,7 +58,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      */
     @Override
     public void catalogAnimal(String name, Animal animalName) {
-        animalLibary.put(name, animalName);
+        animalLibrary.put(name, animalName);
     }
 
     /**
@@ -70,6 +70,26 @@ public class PrototypeAnimalFactory implements AnimalFactory {
     @Override
     public void catalogBody(String name, Body bodyName) {
         bodyLibrary.put(name, bodyName);
+    }
+    
+    /**
+     * Checks if animal exists in catalog
+     * 
+     * @param name of animal
+     * @return boolean
+     */
+    public boolean animalExists(String name){
+        return animalLibrary.containsKey(name);
+    }
+    
+    /**
+     * Checks if body exists in catalog
+     * 
+     * @param name of body
+     * @return boolean
+     */
+    public boolean bodyExists(String name){
+        return bodyLibrary.containsKey(name);
     }
 
     /**
