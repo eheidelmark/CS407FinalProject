@@ -25,6 +25,7 @@ public class BaseAnimal implements Animal{
     private final boolean canEatLarger;
     private String animalName;
     private BoardTile position;
+    private double health;
     
     public BaseAnimal(String animalName, int size, boolean canCannibalize, boolean canEatLarger, AnimalType animalType, MovementStrategy MS, int movementRate, Body body){
         this.animalName = animalName;
@@ -35,18 +36,25 @@ public class BaseAnimal implements Animal{
         this.MS = MS;
         this.movementRate = movementRate;
         this.body = body;
+        health = 100.0;
     }   
     /**
      * Uses the associated movement strategy based on movement rate.
      */
     @Override
     public void move() {
-        for(int i = 0; i < movementRate; i++) {
-            //request neightboring tiles
-            //positon = MS.move(getTiles(position));
+        health -= 10.0;
+        if(health <= 0.0) {
             position.removeAnimal(this);
-            position = MS.move(new ArrayList<BoardTile>()); //TODO
-            position.addAnimal(this);
+            System.out.println(animalName + " died of exhaustion at " + position.getX() + "," + position.getY());
+        } else {
+            for(int i = 0; i < movementRate; i++) {
+                //request neightboring tiles
+                //positon = MS.move(getTiles(position));
+                position.removeAnimal(this);
+                position = MS.move(new ArrayList<BoardTile>()); //TODO
+                position.addAnimal(this);
+            }
         }
     }
     /**
@@ -64,12 +72,18 @@ public class BaseAnimal implements Animal{
      */
     @Override
     public void eat() {
-        if(canCannibalize){
-            
+        double amountLeft = 0.0;
+        if(animalType == AnimalType.Carnivore){
+            amountLeft = position.eatMeat(10.0);
         }
-        if(canEatLarger){
-            
+        if(animalType == AnimalType.Herbivore){
+            amountLeft = position.eatPlant(10.0);
         }
+        if(animalType == AnimalType.Omnivore){
+            amountLeft = position.eatMeat(10.0);
+            if(amountLeft > 0.0) position.eatPlant(10.0);
+        }
+        health += (10.0 - amountLeft);
         System.out.println("eating");
     }
     /**
