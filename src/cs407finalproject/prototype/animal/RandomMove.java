@@ -22,4 +22,8 @@ public class RandomMove implements MovementStrategy {
         return neighboringTiles.get(random);
     }
 
+    @Override
+    public String toString() {
+        return "RandomMove";
+    }
 }

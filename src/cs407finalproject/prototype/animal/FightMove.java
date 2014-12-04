@@ -22,4 +22,9 @@ public class FightMove implements MovementStrategy {
         int random = new Random().nextInt(neighboringTiles.size());
         return neighboringTiles.get(random);
     }
+    
+    @Override
+    public String toString() {
+        return "FightMove";
+    }
 }

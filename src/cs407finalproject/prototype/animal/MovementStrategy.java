@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface MovementStrategy {
     public BoardTile move(List<BoardTile> neighboringTiles);
+    public String toString();
 }
