@@ -28,15 +28,15 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
     for (int i = 0; i < size; i++){
             for (int j = 0; j < size; j++){ 
                 val = Board.get(i).get(j);
-                if ("Water".equals(val)){
+                if ("Water".equals(val)){                    
                     VegetationDirector.buildUnderwater(builder);
                     GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
                 }
-                if ("Land".equals(val)){
+                if ("Land".equals(val)){                    
                     VegetationDirector.buildTemperate(builder);
                     GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
                 }
-                if ("Mountain".equals(val)){
+                if ("Mountains".equals(val)){                    
                     VegetationDirector.buildBarren(builder);
                     GameBoard[i][j] = new BoardTile(i,j, val, builder.build(), false);
                 }             
@@ -44,6 +44,18 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
             }            
     }
 }
+    public String toString(){
+        String board = "";
+        
+        for (int i = 0; i < this.Size; i++){
+            for (int j = 0; j < this.Size; j++){
+                board += GameBoard[i][j].getTerrain();
+                board += "\n";
+            }       
+        }
+        return board;
+    }
+    
     public BoardTile getTile(int x, int y){
         return GameBoard[x][y];
     }
@@ -78,19 +90,19 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
         }
         @Override
         public boolean hasNext() {            
-            return ((xPos < (Size -1)) &&(yPos < (Size -1)));
+            return !((xPos == (Size -1)) &&(yPos == (Size -1)));
         }
 
         @Override
         public Object next() {
-        //if (hasNext() )
+        
         {
         //if the x coordinate is less than the row size, we can move the iterator right one square    
             if (xPos < (Size -1 )){
                 xPos++;               
             }
-            //if we're in the last tile of a row, next should move us down to the next row unless we're in the last row
-            else if ( (yPos < Size -2)){
+            //at the end of a row, move over
+            else if ( xPos == (Size -1)){
                 xPos = 0;
                 yPos++;            
             }        
