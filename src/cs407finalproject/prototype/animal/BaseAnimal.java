@@ -77,16 +77,21 @@ public class BaseAnimal implements Animal{
         double amountLeft = 0.0;
         if(animalType == AnimalType.Carnivore){
             amountLeft = position.eatMeat(10.0);
+            System.out.println(animalName + " is eating meat.");
         }
         if(animalType == AnimalType.Herbivore){
             amountLeft = position.eatPlant(10.0);
+            System.out.println(animalName + " is eating plants.");
         }
         if(animalType == AnimalType.Omnivore){
             amountLeft = position.eatMeat(10.0);
-            if(amountLeft > 0.0) position.eatPlant(10.0);
+            System.out.println(animalName + " is eating meat.");
+            if(amountLeft > 0.0) {
+                position.eatPlant(10.0);
+                System.out.println(animalName + " is eating plants.");
+            }
         }
         health += (10.0 - amountLeft);
-        System.out.println("eating");
     }
     /**
      * Mutates the animal randomly.
