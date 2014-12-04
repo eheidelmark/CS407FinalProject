@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package guiconcept;
+import cs407finalproject.BoardTile;
 import cs407finalproject.GameBoard;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -11,6 +12,7 @@ import java.util.Random;
 import java.awt.Canvas;
 import java.awt.Scrollbar;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author Eric
@@ -28,7 +30,7 @@ GameBoard board;
         Canvas.setBackground(Color.white);
         Canvas.setSize(700,700);        
         jPanel3.add(Canvas);       
-        jTextField1.setText("3");
+        jTextField1.setText("1");
     }
     
 public int getTiles(){
@@ -275,6 +277,12 @@ public int getMountains(){
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        board = new GameBoard(tempBoard, getTiles());       
        jButton1.setVisible(false);
+       Iterator<BoardTile> tileIter = board.tileIterator();
+       while (tileIter.hasNext()){
+            System.out.println(tileIter.next().getTerrain());
+           
+           
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -287,6 +295,7 @@ public int getMountains(){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {                
                 new MainGUI().setVisible(true);
+                
             }
         });
     }

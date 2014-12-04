@@ -102,8 +102,7 @@ public class BoardTile {
         }
     }
     public boolean isOccupied() {
-        if(inhabitants.size() > 0) return true;
-        return false;
+        return inhabitants.size() > 0;
     }
     public boolean isTraversable() {
         return traversable;

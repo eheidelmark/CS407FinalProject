@@ -67,20 +67,39 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
         return this.new tileIterator();
     }
     private class tileIterator<BoardTile> implements Iterator{
-
+         int xPos;
+         int yPos;
+        
+        
+        public tileIterator(){
+            xPos = 0;
+            yPos = 0;
+           
+        }
         @Override
-        public boolean hasNext() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public boolean hasNext() {            
+            return ((xPos < (Size -1)) &&(yPos < (Size -1)));
         }
 
         @Override
         public Object next() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //if (hasNext() )
+        {
+        //if the x coordinate is less than the row size, we can move the iterator right one square    
+            if (xPos < (Size -1 )){
+                xPos++;               
+            }
+            //if we're in the last tile of a row, next should move us down to the next row unless we're in the last row
+            else if ( (yPos < Size -2)){
+                xPos = 0;
+                yPos++;            
+            }        
+        }         
+        return getTile(xPos, yPos);        
         }
-
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+             //To change body of generated methods, choose Tools | Templates.
         }
     }
 }
