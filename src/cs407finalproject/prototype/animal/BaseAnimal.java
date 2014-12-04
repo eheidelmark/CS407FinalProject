@@ -6,6 +6,7 @@
 package cs407finalproject.prototype.animal;
 
 import cs407finalproject.BoardTile;
+import cs407finalproject.GameBoard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -51,8 +52,8 @@ public class BaseAnimal implements Animal{
             for(int i = 0; i < movementRate; i++) {
                 //request neightboring tiles
                 //positon = MS.move(getTiles(position));
-                position.removeAnimal(this);
-                position = MS.move(new ArrayList<BoardTile>()); //TODO
+                position.removeAnimal(this);                
+                position = MS.move(GameBoard.getInstance(null, size).getNeighbors(position.getX(), position.getY()));
                 position.addAnimal(this);
             }
         }
