@@ -15,12 +15,20 @@ import java.util.Iterator;
  * @author Eric
  */
 public class GameBoard { 
+    private static GameBoard instance = null;
     private int Size;
     private BoardTile[][] GameBoard;
     private Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
     public Iterator<BoardTile> tileIterator;
 
-public GameBoard(ArrayList<ArrayList<String>> Board, int size){
+public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size){
+    if (instance == null){
+        return new GameBoard(Board,size);
+    }else
+        return instance;
+    }
+    
+protected GameBoard(ArrayList<ArrayList<String>> Board, int size){
     GameBoard = new BoardTile[size][size];
     tileIterator = new GameBoard.tileIterator();
     Size = size;
