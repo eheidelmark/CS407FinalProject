@@ -276,12 +276,7 @@ public int getMountains(){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        board =  GameBoard.getInstance(tempBoard, getTiles());       
-       jButton1.setVisible(false);
-       Iterator<BoardTile> tileIter = board.tileIterator();
-       
-       while (tileIter.hasNext()) {
-      System.out.println(tileIter.next().getTerrain());
-    }
+       jButton1.setVisible(false);    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
