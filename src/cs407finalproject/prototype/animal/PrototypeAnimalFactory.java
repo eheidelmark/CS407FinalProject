@@ -35,8 +35,10 @@ public class PrototypeAnimalFactory implements AnimalFactory {
      * Creates clone of cataloged animal
      */
     @Override
-    public Animal makeAnimal(String animalName) {
+    public Animal makeAnimal(String animalName, String animalId) {
         Animal prototypeAnimal = animalLibrary.get(animalName);
+        Animal clone = (Animal) prototypeAnimal.clone();
+        clone.setName(prototypeAnimal.getName() + animalId);
         return (Animal) prototypeAnimal.clone();
     }
 

@@ -124,6 +124,15 @@ public class BaseAnimal implements Animal{
         return animalName;
     }
     /**
+     * Sets the name of the animal.
+     * 
+     * @param name 
+     */
+    @Override
+    public void setName(String name){
+        animalName = name;
+    }
+    /**
      * Returns the type of animal
      * 
      * @return AnimalType

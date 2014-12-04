@@ -9,7 +9,7 @@ package cs407finalproject.prototype.animal;
  */
 public interface AnimalFactory {
 
-    public Animal makeAnimal(String type);
+    public Animal makeAnimal(String type, String AnimalId);
 
     public Body makeBody(String type);
 
