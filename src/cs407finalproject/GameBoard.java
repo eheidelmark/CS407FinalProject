@@ -49,7 +49,7 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
         
         for (int i = 0; i < this.Size; i++){
             for (int j = 0; j < this.Size; j++){
-                board += GameBoard[i][j].getTerrain();
+                board += GameBoard[j][i].getTerrain();
                 board += "\n";
             }       
         }
@@ -79,33 +79,45 @@ public GameBoard(ArrayList<ArrayList<String>> Board, int size){
         return this.new tileIterator();
     }
     private class tileIterator<BoardTile> implements Iterator{
-         int xPos;
-         int yPos;
-        
+        int xPos;
+        int yPos;
+        private boolean onFirst = true;
         
         public tileIterator(){
+            
             xPos = 0;
             yPos = 0;
            
         }
         @Override
-        public boolean hasNext() {            
-            return !((xPos == (Size -1)) &&(yPos == (Size -1)));
+        public boolean hasNext() {               
+            if(((xPos == (Size -1)) &&(yPos == (Size -1)))){
+                xPos = 0;
+                yPos = 0;
+                onFirst = true;               
+                return false;
+            }else {
+                return true;
+            }
         }
 
         @Override
         public Object next() {
-        
-        {
-        //if the x coordinate is less than the row size, we can move the iterator right one square    
-            if (xPos < (Size -1 )){
-                xPos++;               
+        if (onFirst) {        
+            onFirst = false;
+            return getTile(0,0);
+        }
+            
+        else{
+            //if the x coordinate is less than the row size, we can move the iterator right one square    
+            if (xPos < (Size -1 )){            
+                xPos++;                
             }
             //at the end of a row, move over
             else if ( xPos == (Size -1)){
                 xPos = 0;
-                yPos++;            
-            }        
+                yPos++;
+            }   
         }         
         return getTile(xPos, yPos);        
         }
