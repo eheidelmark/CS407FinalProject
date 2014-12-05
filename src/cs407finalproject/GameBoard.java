@@ -32,7 +32,8 @@ public class GameBoard {
     public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size, int animals){
         if (instance == null){
             System.out.println("Creating GameBoard");
-            return new GameBoard(Board,size, animals);
+            instance = new GameBoard(Board,size, animals);
+            return instance;
         }else
             return instance;
     }

@@ -114,8 +114,10 @@ public class BaseAnimal implements Animal{
                 break;
             // remove random apendage    
             case 2:
-                body.subComponents.remove(random.nextInt(body.subComponents.size()));
-                System.out.println(animalName + " shedded an apendage.");
+                if(body.subComponents.size() > 0){
+                    body.subComponents.remove(random.nextInt(body.subComponents.size()));
+                    System.out.println(animalName + " shedded an apendage.");
+                }
                 break;
         }        
         //System.out.println("mutating");
