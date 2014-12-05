@@ -67,6 +67,9 @@ public class BoardTile {
             inhabitants.remove(animal);
         }
     }
+    public List<Animal> getAnimalsOnTile() {
+        return inhabitants;
+    }
     public double eatMeat(double amount) {
         if(meat > amount) {
             meat -= amount;

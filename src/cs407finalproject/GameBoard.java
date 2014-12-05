@@ -29,38 +29,48 @@ public class GameBoard {
     private Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
     public Iterator<BoardTile> tileIterator;
 
-public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size, int animals){
-    if (instance == null){
-        return new GameBoard(Board,size, animals);
-    }else
-        return instance;
+    public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size, int animals){
+        if (instance == null){
+            return new GameBoard(Board,size, animals);
+        }else
+            return instance;
+        }
+
+    protected GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
+        GameBoard = new BoardTile[size][size];
+        tileIterator = new GameBoard.tileIterator();
+        Size = size;
+        String val;
+        for (int i = 0; i < size; i++){
+                for (int j = 0; j < size; j++){ 
+                    val = Board.get(i).get(j);
+                    if ("Water".equals(val)){                    
+                        VegetationDirector.buildUnderwater(builder);
+                        GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
+                    }
+                    if ("Land".equals(val)){                    
+                        VegetationDirector.buildTemperate(builder);
+                        GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
+                    }
+                    if ("Mountains".equals(val)){                    
+                        VegetationDirector.buildBarren(builder);
+                        GameBoard[i][j] = new BoardTile(i,j, val, builder.build(), false);
+                    }             
+
+                }            
+        }
+        populateBoard(size, animals);
     }
     
-protected GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
-    GameBoard = new BoardTile[size][size];
-    tileIterator = new GameBoard.tileIterator();
-    Size = size;
-    String val;
-    for (int i = 0; i < size; i++){
-            for (int j = 0; j < size; j++){ 
-                val = Board.get(i).get(j);
-                if ("Water".equals(val)){                    
-                    VegetationDirector.buildUnderwater(builder);
-                    GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
-                }
-                if ("Land".equals(val)){                    
-                    VegetationDirector.buildTemperate(builder);
-                    GameBoard[i][j] = new BoardTile(i,j,val,builder.build(), true);
-                }
-                if ("Mountains".equals(val)){                    
-                    VegetationDirector.buildBarren(builder);
-                    GameBoard[i][j] = new BoardTile(i,j, val, builder.build(), false);
-                }             
-             
-            }            
+    public void takeTurn(){
+        while(tileIterator.hasNext()) {
+            List<Animal> animalsOnTile = tileIterator.next().getAnimalsOnTile();
+            for(Animal animal: animalsOnTile){
+                animal.takeTurn();
+            }
+        }
     }
-    populateBoard(size, animals);
-}
+    
     public String toString(){
         String board = "";
         
