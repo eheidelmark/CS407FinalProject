@@ -9,6 +9,7 @@ import cs407finalproject.builder.vegetation.Vegetation;
 import cs407finalproject.builder.vegetation.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -67,8 +68,8 @@ protected GameBoard(ArrayList<ArrayList<String>> Board, int size){
     public BoardTile getTile(int x, int y){
         return GameBoard[x][y];
     }
-    public ArrayList<BoardTile> getNeighbors(int x, int y){
-        ArrayList<BoardTile> neighbors = new ArrayList(); 
+    public List<BoardTile> getNeighbors(int x, int y){
+        List<BoardTile> neighbors = new ArrayList(); 
         //North
         if (y > 0)
             neighbors.add(getTile(x, y-1));

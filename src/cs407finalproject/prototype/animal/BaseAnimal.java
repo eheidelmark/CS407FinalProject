@@ -53,7 +53,7 @@ public class BaseAnimal implements Animal{
                 //request neightboring tiles
                 //positon = MS.move(getTiles(position));
                 position.removeAnimal(this);                
-                position = MS.move(GameBoard.getInstance(null, size,).getNeighbors(position.getX(), position.getY()));
+                position = MS.move(GameBoard.getInstance(null, size).getNeighbors(position.getX(), position.getY()));
                 position.addAnimal(this);
                 System.out.println(animalName + " is moving to " + position.getX() + "," + position.getY());
             }
