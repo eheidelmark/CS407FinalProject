@@ -39,6 +39,7 @@
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtAnimals" alignment="0" max="32767" attributes="0"/>
                   <Component id="jLabel2" pref="225" max="32767" attributes="0"/>
+                  <Component id="jPanel4" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -47,7 +48,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="jPanel3" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -62,7 +63,9 @@
                       <Component id="txtAnimals" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -113,13 +116,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="chbWater" min="-2" max="-2" attributes="0"/>
                       <Component id="chbFlat" min="-2" max="-2" attributes="0"/>
-                      <Component id="sldFlat" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="chbMountains" min="-2" max="-2" attributes="0"/>
-                      <Component id="sldMountains" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="83" max="32767" attributes="0"/>
+                  <EmptySpace min="202" pref="132" max="32767" attributes="0"/>
               </Group>
               <Component id="sldWater" max="32767" attributes="0"/>
+              <Component id="sldFlat" alignment="0" max="32767" attributes="0"/>
+              <Component id="sldMountains" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -262,5 +265,76 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtAnimals">
     </Component>
+    <Container class="javax.swing.JPanel" name="jPanel4">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Iterations"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="btnSingle" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="txtTurns" max="32767" attributes="0"/>
+              </Group>
+              <Component id="btnMultiTurns" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator1" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTurns" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnMultiTurns" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="btnSingle" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnSingle">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Single Turn"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSingleActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Number of iterations: "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTurns">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnMultiTurns">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Take Turns"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMultiTurnsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

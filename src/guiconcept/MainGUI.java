@@ -31,6 +31,7 @@ GameBoard board;
         Canvas.setSize(700,700);        
         jPanel3.add(Canvas);       
         jTextField1.setText("1");
+        txtTurns.setText("1");
     }
     
 public int getTiles(){
@@ -47,7 +48,11 @@ public int getFlat(){
 }
 public int getMountains(){
     return sldMountains.getValue();
-}            
+}
+public int getTurns(){
+    return Integer.parseInt(txtTurns.getText());
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,6 +80,12 @@ public int getMountains(){
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtAnimals = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        btnSingle = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtTurns = new javax.swing.JTextField();
+        btnMultiTurns = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,11 +140,11 @@ public int getMountains(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chbWater)
                     .addComponent(chbFlat)
-                    .addComponent(sldFlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chbMountains)
-                    .addComponent(sldMountains, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(chbMountains))
+                .addGap(132, 132, Short.MAX_VALUE))
             .addComponent(sldWater, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sldFlat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(sldMountains, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +213,53 @@ public int getMountains(){
 
         jLabel1.setText("Number of creatures:");
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Iterations"));
+
+        btnSingle.setText("Single Turn");
+        btnSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSingleActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Number of iterations: ");
+
+        btnMultiTurns.setText("Take Turns");
+        btnMultiTurns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiTurnsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnSingle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTurns))
+            .addComponent(btnMultiTurns, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtTurns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMultiTurns)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSingle))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,13 +275,14 @@ public int getMountains(){
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addComponent(txtAnimals)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -238,7 +297,9 @@ public int getMountains(){
                         .addComponent(txtAnimals, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
@@ -280,6 +341,16 @@ public int getMountains(){
        board =  GameBoard.getInstance(tempBoard, getTiles(), getAnimals());       
        jButton1.setVisible(false);    
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingleActionPerformed
+        board.takeTurn();
+    }//GEN-LAST:event_btnSingleActionPerformed
+
+    private void btnMultiTurnsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiTurnsActionPerformed
+        for (int i = 0; i < getTurns(); i++){
+            board.takeTurn();
+        }    
+    }//GEN-LAST:event_btnMultiTurnsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,6 +428,8 @@ public class MyCanvas extends Canvas {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMultiTurns;
+    private javax.swing.JButton btnSingle;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbFlat;
     private javax.swing.JCheckBox chbMountains;
@@ -365,16 +438,20 @@ public class MyCanvas extends Canvas {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JSlider sldFlat;
     private javax.swing.JSlider sldMountains;
     private javax.swing.JSlider sldWater;
     private javax.swing.JTextField txtAnimals;
+    private javax.swing.JTextField txtTurns;
     // End of variables declaration//GEN-END:variables
 }
 
