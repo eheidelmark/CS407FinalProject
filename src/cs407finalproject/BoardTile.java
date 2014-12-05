@@ -7,6 +7,7 @@ package cs407finalproject;
 
 import cs407finalproject.builder.vegetation.Vegetation;
 import cs407finalproject.prototype.animal.Animal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class BoardTile {
     private String terrainType;
     private int vegetationValue;
     private Vegetation tileOfVegetation;
-    private List<Animal> inhabitants;
+    private ArrayList<Animal> inhabitants;
     private boolean traversable;
     private double meat = 0.0;
 
@@ -29,7 +30,7 @@ public class BoardTile {
         this.y = y;
         terrainType = terrain;
         tileOfVegetation = veg;
-        inhabitants = null;
+        inhabitants = new ArrayList();
         this.traversable = traversable;
     }
 

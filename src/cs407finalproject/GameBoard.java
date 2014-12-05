@@ -83,9 +83,8 @@ protected GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
             LinkedList<Animal> animalsList = animalLoader.getAnimals(animals);
             Random rand = new Random();
             int xPos; 
-            int yPos; 
+            int yPos;            
             
-            //System.out.println(xPos + " " + yPos);
             for(Animal animal: animalsList) {
                 System.out.println(animal.getName());
                 xPos = rand.nextInt(size);
