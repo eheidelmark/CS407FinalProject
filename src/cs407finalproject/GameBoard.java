@@ -7,9 +7,16 @@ package cs407finalproject;
 
 import cs407finalproject.builder.vegetation.Vegetation;
 import cs407finalproject.builder.vegetation.*;
+import cs407finalproject.parser.AnimalLoader;
+import cs407finalproject.parser.parserMain;
+import cs407finalproject.prototype.animal.Animal;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,14 +29,14 @@ public class GameBoard {
     private Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
     public Iterator<BoardTile> tileIterator;
 
-public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size){
+public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size, int animals){
     if (instance == null){
-        return new GameBoard(Board,size);
+        return new GameBoard(Board,size, animals);
     }else
         return instance;
     }
     
-protected GameBoard(ArrayList<ArrayList<String>> Board, int size){
+protected GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
     GameBoard = new BoardTile[size][size];
     tileIterator = new GameBoard.tileIterator();
     Size = size;
@@ -52,6 +59,7 @@ protected GameBoard(ArrayList<ArrayList<String>> Board, int size){
              
             }            
     }
+    populateBoard(size, animals);
 }
     public String toString(){
         String board = "";
@@ -65,6 +73,32 @@ protected GameBoard(ArrayList<ArrayList<String>> Board, int size){
         return board;
     }
     
+    public void populateBoard(int size, int animals){
+     try {
+            BoardTile tile;
+            AnimalLoader animalLoader = new AnimalLoader("config/animals.xml");
+            Thread loader = new Thread(animalLoader);
+            loader.start();
+            loader.join();
+            LinkedList<Animal> animalsList = animalLoader.getAnimals(animals);
+            Random rand = new Random();
+            int xPos; 
+            int yPos; 
+            
+            //System.out.println(xPos + " " + yPos);
+            for(Animal animal: animalsList) {
+                System.out.println(animal.getName());
+                xPos = rand.nextInt(size);
+                yPos = rand.nextInt(size);
+                System.out.println(xPos + " " + yPos);
+                tile = getTile(xPos,yPos);
+                tile.addAnimal(animal);
+            }
+            
+        } catch (InterruptedException ex) {
+            Logger.getLogger(parserMain.class.getName()).log(Level.SEVERE, null, ex);    
+    }
+    }
     public BoardTile getTile(int x, int y){
         return GameBoard[x][y];
     }
