@@ -29,18 +29,17 @@ public class AnimalLoaderTest {
     @Test
     public void testGetAnimals() {
         try {
-            System.out.println("getAnimals");
+            
             AnimalLoader animalLoader = new AnimalLoader("config/animals.xml");
             Thread loader = new Thread(animalLoader);
             loader.start();
             loader.join();
+            System.out.println("testing getAnimals");
             LinkedList<Animal> animals = animalLoader.getAnimals(20);
-            System.out.println("Done Loading");
             
             for(Animal animal: animals) {
                 System.out.println(animal.getName());
             }
-            
             assertEquals(20, animals.size());
         } catch (InterruptedException ex) {
             Logger.getLogger(AnimalLoaderTest.class.getName()).log(Level.SEVERE, null, ex);

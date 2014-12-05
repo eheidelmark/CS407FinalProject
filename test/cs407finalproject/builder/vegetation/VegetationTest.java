@@ -102,7 +102,6 @@ public class VegetationTest {
     public void testGrow() {
         System.out.println("Testing grow");
         double expResult = 900.0;
-        double initialResult = instance.getCurrentAvailableNutrition();
         instance.grow();
         double result = instance.getCurrentAvailableNutrition();
         assertEquals(expResult, result, 0.0);

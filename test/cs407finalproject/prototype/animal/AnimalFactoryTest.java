@@ -39,12 +39,12 @@ public class AnimalFactoryTest {
      */
     @Test
     public void testMakeAnimal() {
-        System.out.println("makeAnimal");
         int legs = 2;
         int arms = 2;
         SkinType skinType = SkinType.FEATHERS;
         String bodyType = legs + " legs " + arms + " arms " + skinType;
         AF.catalogBody(bodyType, AF.CreateBody(arms, legs, skinType));
+        System.out.println("testing catalogBody");
         assertTrue(AF.bodyExists(bodyType));
         
         boolean cannibal = true;
@@ -55,13 +55,17 @@ public class AnimalFactoryTest {
         int movementRate = 2;
         
         AF.catalogAnimal("testAnimal", new BaseAnimal("testAnimal", size, cannibal, eatLarger, animalType, movementStrategy, movementRate, AF.makeBody(bodyType)));
+        System.out.println("testing catalogAnimal");
         assertTrue(AF.animalExists("testAnimal"));
         
         
-        Animal testAnimal = AF.makeAnimal("testAnimal", "1");       
+        Animal testAnimal = AF.makeAnimal("testAnimal", "1");  
+        System.out.println("testing makeAnimal");
         assertEquals(testAnimal.getName(), "testAnimal1");
         testAnimal.setName("testAnimal3");
+        System.out.println("testing animal.setName");
         assertEquals(testAnimal.getName(), "testAnimal3");
+        System.out.println("testing clone animal");
         Animal testAnimal2 = testAnimal.clone();
         assertEquals(testAnimal2.getName(), "testAnimal3");
     }

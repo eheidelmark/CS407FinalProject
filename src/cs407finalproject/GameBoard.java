@@ -31,12 +31,13 @@ public class GameBoard {
 
     public static GameBoard getInstance(ArrayList<ArrayList<String>> Board, int size, int animals){
         if (instance == null){
+            System.out.println("Creating GameBoard");
             return new GameBoard(Board,size, animals);
         }else
             return instance;
-        }
+    }
 
-    protected GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
+    public GameBoard(ArrayList<ArrayList<String>> Board, int size, int animals){
         GameBoard = new BoardTile[size][size];
         tileIterator = new GameBoard.tileIterator();
         Size = size;
@@ -84,29 +85,30 @@ public class GameBoard {
     }
     
     public void populateBoard(int size, int animals){
-     try {
-            BoardTile tile;
-            AnimalLoader animalLoader = new AnimalLoader("config/animals.xml");
-            Thread loader = new Thread(animalLoader);
-            loader.start();
-            loader.join();
-            LinkedList<Animal> animalsList = animalLoader.getAnimals(animals);
-            Random rand = new Random();
-            int xPos; 
-            int yPos;            
-            
-            for(Animal animal: animalsList) {
-                System.out.println(animal.getName());
-                xPos = rand.nextInt(size);
-                yPos = rand.nextInt(size);
-                System.out.println(xPos + " " + yPos);
-                tile = getTile(xPos,yPos);
-                tile.addAnimal(animal);
-            }
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(parserMain.class.getName()).log(Level.SEVERE, null, ex);    
-    }
+        try {
+               BoardTile tile;
+               AnimalLoader animalLoader = new AnimalLoader("config/animals.xml");
+               Thread loader = new Thread(animalLoader);
+               loader.start();
+               loader.join();
+               LinkedList<Animal> animalsList = animalLoader.getAnimals(animals);
+               Random rand = new Random();
+               int xPos; 
+               int yPos;            
+
+               for(Animal animal: animalsList) {
+                   System.out.println(animal.getName());
+                   xPos = rand.nextInt(size);
+                   yPos = rand.nextInt(size);
+                   System.out.println(xPos + " " + yPos);
+                   tile = getTile(xPos,yPos);
+                   tile.addAnimal(animal);
+                   animal.setTile(tile);
+               }
+
+           } catch (InterruptedException ex) {
+               Logger.getLogger(parserMain.class.getName()).log(Level.SEVERE, null, ex);    
+       }
     }
     public BoardTile getTile(int x, int y){
         return GameBoard[x][y];
