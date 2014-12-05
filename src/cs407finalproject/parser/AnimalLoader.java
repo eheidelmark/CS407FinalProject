@@ -205,7 +205,7 @@ public class AnimalLoader implements Runnable{
         LinkedList<Animal> randomAnimals = new LinkedList<>();
         Random random = new Random();
         for(int i = 0; i < numberOf; i++) {
-            randomAnimals.add(    AF.makeAnimal(  animals.get( random.nextInt(animals.size()) ), "" + i  )   );
+            randomAnimals.add(    AF.makeAnimal(  animals.get( random.nextInt(animals.size()) ), "" + (i+1)  )   );
         }
         System.out.println("Created " + numberOf + " random animals.");
         return randomAnimals;

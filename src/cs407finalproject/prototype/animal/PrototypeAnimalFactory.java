@@ -39,7 +39,7 @@ public class PrototypeAnimalFactory implements AnimalFactory {
         Animal prototypeAnimal = animalLibrary.get(animalName);
         Animal clone = (Animal) prototypeAnimal.clone();
         clone.setName(prototypeAnimal.getName() + animalId);
-        return (Animal) prototypeAnimal.clone();
+        return (Animal) clone.clone();
     }
 
     /**
