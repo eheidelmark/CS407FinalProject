@@ -67,8 +67,8 @@ public class GameBoard {
     public void takeTurn(){
         while(tileIterator.hasNext()) {
             List<Animal> animalsOnTile = tileIterator.next().getAnimalsOnTile();
-            for(Animal animal: animalsOnTile){
-                animal.takeTurn();
+            for(int i = 0; i < animalsOnTile.size(); i++) {
+                animalsOnTile.get(i).takeTurn();
             }
         }
     }
@@ -120,10 +120,10 @@ public class GameBoard {
         if (y > 0)
             neighbors.add(getTile(x, y-1));
         //East
-        if (x < this.Size)
+        if (x < (this.Size - 1))
            neighbors.add(getTile(x+1, y));
         //South
-        if (y < this.Size)
+        if (y < (this.Size - 1))
             neighbors.add(getTile(x, y+1));
         //West
         if (x > 0)
