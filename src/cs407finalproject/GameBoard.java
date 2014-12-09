@@ -24,7 +24,7 @@ import java.util.logging.Logger;
  */
 public class GameBoard { 
     private static GameBoard instance = null;
-    private int Size;
+    private int Size, turn;
     private BoardTile[][] GameBoard;
     private Vegetation.VegetationBuilder builder = new Vegetation.VegetationBuilder();
     public Iterator<BoardTile> tileIterator;
@@ -65,9 +65,10 @@ public class GameBoard {
     }
     
     public void takeTurn(){
+        System.out.println("Taking turn " + ++turn);
         while(tileIterator.hasNext()) {
             List<Animal> animalsOnTile = tileIterator.next().getAnimalsOnTile();
-            for(int i = 0; i < animalsOnTile.size(); i++) {
+            for(int i = 0; i < animalsOnTile.size(); i++) {                
                 animalsOnTile.get(i).takeTurn();
             }
         }
