@@ -49,4 +49,40 @@
         <legs>2</legs>
         <skinType>Fur</skinType>        
     </animal>
+        <animal>
+        <animalName>Chadasaurus</animalName>
+        <animalType>Omnivore</animalType>
+        <movementStrategy>Fight</movementStrategy>
+	<movementRate>3</movementRate>
+	<cannibal>false</cannibal>
+	<size>50</size>
+	<eatLarger>false</eatLarger>
+        <arms>2</arms>
+        <legs>2</legs>
+        <skinType>Fur</skinType>        
+    </animal>
+    <animal>
+        <animalName>TyStanisaurus Rex</animalName>
+        <animalType>Carnivore</animalType>
+        <movementStrategy>Fight</movementStrategy>
+	<movementRate>1</movementRate>
+	<cannibal>True</cannibal>
+	<size>50</size>
+	<eatLarger>True</eatLarger>
+        <arms>2</arms>
+        <legs>2</legs>
+        <skinType>Fur</skinType>        
+    </animal>
+        <animal>
+        <animalName>VelociMarkov</animalName>
+        <animalType>Herbivore</animalType>
+        <movementStrategy>Flight</movementStrategy>
+	<movementRate>2</movementRate>
+	<cannibal>False</cannibal>
+	<size>25</size>
+	<eatLarger>True</eatLarger>
+        <arms>2</arms>
+        <legs>2</legs>
+        <skinType>Fur</skinType>        
+    </animal>
 </animals>
